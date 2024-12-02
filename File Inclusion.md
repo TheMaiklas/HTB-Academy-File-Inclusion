@@ -76,3 +76,26 @@ after finding flag file we encode it as url using <code>cat /FlagFileName.txt</c
 
 <h1><ins>Automated Scanning</ins></h1>
 <h2>Task: Fuzz the web application for exposed parameters, then try to exploit it with one of the LFI wordlists to read /flag.txt/</h2>
+Following HTB writeup im using <code>ffuf -w /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u 'http://SERVER_IP:PORT/index.php?FUZZ=value' -fs 2287</code>,burp-parameter-names.txt might not be by default in Parrot OS HTB ediot so with help of google you can find txt file and run the command
+
+![Screenshot 2024-12-02 200657](https://github.com/user-attachments/assets/5822c583-1d51-4636-9807-4a61403c8fb4)
+
+After running command and trying few results theres no success, if you notice most of the output is in 2309 bit size so if we change our command to exclude these results and try again well find a match.
+
+![Screenshot 2024-12-02 200735](https://github.com/user-attachments/assets/95bc30a0-daf1-4f4b-bf4c-647332941a81)
+
+After finding working parameter we can try <code>ffuf -w /opt/useful/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u 'http://SERVER_IP:PORT/index.php?view=FUZZ' -fs 2287</code>, but again were getting to many wrong results so after checking size and excluding the most common ones we get working results.
+
+![Screenshot 2024-12-02 202346](https://github.com/user-attachments/assets/d1c967d8-02cd-4833-b164-208d89b94779)
+
+Then by using our findings and using as our url we get list of users
+
+![Screenshot 2024-12-02 200914](https://github.com/user-attachments/assets/26e610e0-1c0e-4f5f-bac8-8a0b0297ab70)
+
+Changing url end to <code>/flag.txt</code> we get a flag.
+
+![Screenshot 2024-12-02 200953](https://github.com/user-attachments/assets/19be7c48-f37a-4009-9318-f5d28a10375c)
+
+<h1><ins>File Inclusion Prevention</ins></h1>
+<h2>Task: What is the full path to the php.ini file for Apache?</h2>
+
