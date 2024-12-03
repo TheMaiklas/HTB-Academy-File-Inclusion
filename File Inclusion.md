@@ -107,3 +107,18 @@ Answewr is Security.
 
 <h1><ins>Skills Assessment - File Inclusion</ins></h1>
 <h2>Task: Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the / root directory of the file system. Submit the contents of the flag as your answer.</h2>
+Using <code>php://filter/read=convert.base64-encode/resource=config</code> we can read index.php file, after decoding using base64 we find a secret directory
+
+![Screenshot 2024-12-03 192826](https://github.com/user-attachments/assets/b2d4449f-1fa0-42df-82d1-7c40913451b6)
+
+Using ffuf we can find LFI Paths which show us that this is Nginx log, Nginx logs are located in <code>/var/log/nginx/</code>
+
+![Screenshot 2024-12-03 193248](https://github.com/user-attachments/assets/1035be9b-99a0-4c56-9072-6dd06388af04)
+
+Using burpsuite we can poison the User-Agent header and using url encoder we can send commands which helps us to locate flag.txt file.
+
+![Screenshot 2024-12-03 194402](https://github.com/user-attachments/assets/2102a089-0b8f-444d-8ddf-988c751517b0)
+
+![Screenshot 2024-12-03 195148](https://github.com/user-attachments/assets/5bab7746-04f3-4419-bfd7-8d5296dbb690)
+
+
