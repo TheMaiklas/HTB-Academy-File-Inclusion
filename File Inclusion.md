@@ -98,4 +98,12 @@ Changing url end to <code>/flag.txt</code> we get a flag.
 
 <h1><ins>File Inclusion Prevention</ins></h1>
 <h2>Task: What is the full path to the php.ini file for Apache?</h2>
+Using linux find commands or just manualy checking where apache is located we can find php.ini file
 
+![Screenshot 2024-12-03 183408](https://github.com/user-attachments/assets/cf6957e1-8900-47c5-af7d-30875202901a)
+
+<h2>Task: Edit the php.ini file to block system(), then try to execute PHP Code that uses system. Read the /var/log/apache2/error.log file and fill in the blank: system() has been disabled for ________ reasons.</h2>
+Answewr is Security.
+
+<h1><ins>Skills Assessment - File Inclusion</ins></h1>
+<h2>Task: Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the / root directory of the file system. Submit the contents of the flag as your answer.</h2>
