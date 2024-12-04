@@ -1,0 +1,4 @@
+<h1><ins>Directory Fuzzing</ins></h1>
+<h2>Task: In addition to the directory we found above, there is another directory that can be found. What is it?</h2>
+After running <code>ffuf -w <SNIP> -u http://SERVER_IP:PORT/FUZZ</code> we find two direcories blog and forum.
+
